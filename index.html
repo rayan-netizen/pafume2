@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parfum Webshop - Collection Privee</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <style>
+        /* Align all text to the left */
+        body {
+            text-align: left;
+        }
+
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: flex-start; /* Align items to the left */
+        }
+
+        .product-item {
+            width: 250px; /* Adjust width for better alignment */
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Align content to the left */
+            gap: 10px;
+            padding: 20px;
+        }
+
+        .product-item img {
+            width: 100%; /* Adjust image width */
+            height: auto;
+            border-radius: 8px;
+        }
+
+        h1, h2, h3 {
+            font-size: 2.5em; /* Keep consistent heading size */
+            text-align: left; /* Align headings to the left */
+        }
+
+        .hero-content p {
+            text-align: left; /* Align text under the hero section to the left */
+        }
+
+        .product-item h3 {
+            margin: 0;
+            text-align: left; /* Align product titles to the left */
+        }
+
+        .product-item p {
+            margin: 5px 0;
+            text-align: left; /* Align product descriptions to the left */
+        }
+
+        .product-link-box {
+            margin-top: 10px;
+            display: flex;
+            justify-content: flex-start; /* Align buttons to the left */
+        }
+
+        /* Center the text at the top of the page */
+        header {
+            text-align: center;
+            position: relative;
+        }
+
+        nav ul {
+            justify-content: center; /* Center navigation links */
+            display: flex;
+        }
+
+        .social-media {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Center the hero section content vertically and horizontally */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            margin-bottom: 16px;
+        }
+
+        .hero-content p {
+            margin-bottom: 24px;
+        }
+
+        /* Center the "Onze Parfums" section */
+        .section-header {
+            text-align: center;
+        }
+
+        .product-list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cartCountElement = document.getElementById('cart-count');
+            if (cartCountElement) {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cartCountElement.textContent = cart.reduce((total, item) => total + item.quantity, 0);
+            }
+        });
+    </script>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="contact.html">Contacteer Ons</a></li>
+                <li><a href="cart.html">Winkelwagen (<span id="cart-count">0</span>)</a></li>
+                <li><a href="checkout.html">Afrekenen</a></li>
+            </ul>
+        </nav>
+        <div class="social-media">
+            <a href="https://www.snapchat.com" target="_blank">
+                <img src="snapchat-logo.png" alt="Snapchat" class="social-icon">
+            </a>
+            <a href="https://www.instagram.com" target="_blank">
+                <img src="instagram-logo.png" alt="Instagram" class="social-icon">
+            </a>
+            <a href="https://www.tiktok.com" target="_blank">
+                <img src="tiktok-logo.png" alt="TikTok" class="social-icon">
+            </a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content" style="margin-top: -450px;"> <!-- Move the content higher -->
+            <h1 style="display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">Welkom bij Collection Privee</h1>
+            <p>Ontdek onze exclusieve collectie parfums die uw zintuigen prikkelen en een blijvende indruk achterlaten.</p>
+            <a href="#product-section" class="btn-primary">Bekijk Collectie</a>
+        </div>
+    </section>
+    
+    <main>
+        <section id="product-section" class="product-list">
+            <div class="section-header">
+                <h2 style="text-align: center; font-size: 3em; color: #B76E79; text-transform: uppercase; letter-spacing: 1px;">Onze Parfums</h2>
+                <p style="text-align: center; font-size: 1.5em; color: #333; line-height: 1.8; margin-top: 10px;">
+                    Ontdek onze zorgvuldig samengestelde collectie van exclusieve parfums. 
+                    Elk parfum is ontworpen om uw zintuigen te prikkelen en een blijvende indruk achter te laten. 
+                    Perfect voor elke gelegenheid, van casual tot formeel.
+                </p>
+            </div>
+            <div class="product-grid">
+                <!-- Parfum 1 -->
+                <div class="product-item">
+                    <img src="/Users/a9457/Desktop/Scherm­afbeelding 2025-04-07 om 22.53.27.png" alt="Supremê Vanille Élixir Parfum">
+                    <div>
+                        <h3>Supremê Vanille Élixir</h3>
+                        <p>Een luxueuze geur met een mix van citrus en houtachtige tonen.</p>
+                        <p><strong>Prijs: €25</strong></p>
+                        <div class="product-link-box">
+                            <a class="product-link" href="product1.html">Bekijk</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Parfum 2 -->
+                <div class="product-item">
+                    <img src="/Users/a9457/Desktop/Scherm­afbeelding 2025-04-07 om 23.01.37.png" alt="Wood Coco Parfum">
+                    <div>
+                        <h3>Wood Coco</h3>
+                        <p>Een verleidelijke geur met bloemige en fruitige accenten.</p>
+                        <p><strong>Prijs: €25</strong></p>
+                        <div class="product-link-box">
+                            <a class="product-link" href="product2.html">Bekijk</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Parfum 3 -->
+                <div class="product-item">
+                    <img src="/Users/a9457/Desktop/Scherm­afbeelding 2025-04-07 om 23.04.00.png" alt="Musc Ottoman Parfum">
+                    <div>
+                        <h3>Musc Ottoman</h3>
+                        <p>Een frisse geur met tonen van munt en citrus.</p>
+                        <p><strong>Prijs: €25</strong></p>
+                        <div class="product-link-box">
+                            <a class="product-link" href="product3.html">Bekijk</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Parfum 4 -->
+                <div class="product-item">
+                    <img src="/Users/a9457/Desktop/Scherm­afbeelding 2025-04-07 om 23.07.29.png" alt="Théatro Parfum">
+                    <div>
+                        <h3>Théatro</h3>
+                        <p>Een mysterieuze geur met diepe houtachtige en kruidige tonen.</p>
+                        <p><strong>Prijs: €25</strong></p>
+                        <div class="product-link-box">
+                            <a class="product-link" href="product4.html">Bekijk</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Parfum 5 -->
+                <div class="product-item">
+                    <img src="/Users/a9457/Desktop/Scherm­afbeelding 2025-04-07 om 23.10.17.png" alt="Crazy Man Parfum">
+                    <div>
+                        <h3>Crazy Man</h3>
+                        <p>Een krachtige en gedurfde geur, ideaal voor de zelfverzekerde man.</p>
+                        <p><strong>Prijs: €25</strong></p>
+                        <div class="product-link-box">
+                            <a class="product-link" href="product5.html">Bekijk</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Parfum 6 -->
+                <div class="product-item">
+                    <img src="/Users/a9457/Desktop/Scherm­afbeelding 2025-04-07 om 23.13.54.png" alt="Khamarah Parfum">
+                    <div>
+                        <h3>Khamarah</h3>
+                        <p>Een verfrissende geur met maritieme en aquatische tonen.</p>
+                        <p><strong>Prijs: €25</strong></p>
+                        <div class="product-link-box">
+                            <a class="product-link" href="product6.html">Bekijk</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Parfum 7 -->
+                <div class="product-item">
+                    <img src="/Users/a9457/Desktop/Scherm­afbeelding 2025-04-07 om 23.15.11.png" alt="Magnificent Parfum">
+                    <div>
+                        <h3>Magnificent</h3>
+                        <p>Een warme geur met amber en vanilletonen.</p>
+                        <p><strong>Prijs: €25</strong></p>
+                        <div class="product-link-box">
+                            <a class="product-link" href="product7.html">Bekijk</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer id="footer" class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Parfum Webshop. Alle rechten voorbehouden.</p>
+            <p>Contact: info@parfumwebshop.nl | Telefoon: +31 6 12345678</p>
+        </div>
+    </footer>
+</body>
+</html>

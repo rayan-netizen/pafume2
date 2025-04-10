@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supremê Vanille Élixir - Parfum Webshop</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <a href="index.html" class="back-button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z"/></svg>
+        Terug
+    </a>
+    <header class="header">
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="contact.html">Contacteer Ons</a></li>
+                <li><a href="cart.html">Winkelwagen (<span id="cart-count">0</span>)</a></li>
+                <li><a href="checkout.html">Afrekenen</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="product-detail">
+            <div class="product-detail-container">
+                <div class="product-image">
+                    <img src="/Users/a9457/Desktop/Scherm­afbeelding 2025-04-07 om 22.53.27.png" alt="Supremê Vanille Élixir Parfum">
+                </div>
+                <div class="product-info">
+                    <h1>Supremê Vanille Élixir</h1>
+                    <p class="product-price"><strong>Prijs:</strong> €25</p>
+                    <p class="product-description">
+                        Supremê Vanille Élixir is een luxueuze geur die elegantie en verfijning uitstraalt. 
+                        Met een harmonieuze mix van frisse citrusnoten, rijke houtachtige accenten en een vleugje amber, 
+                        is deze parfum perfect voor speciale gelegenheden.
+                    </p>
+                    <p class="product-highlight">
+                        <strong>Waarom kiezen voor Supremê Vanille Élixir?</strong>
+                        <ul>
+                            
+                            <li>Unieke geur die een blijvende indruk achterlaat.</li>
+                            <li>Perfect voor herfst- en winterseizoen.</li>
+                            <li>Ideaal voor formele en feestelijke gelegenheden.</li>
+                        </ul>
+                    </p>
+                    <div>
+                        <label for="quantity">Aantal:</label>
+                        <select id="quantity-1" class="quantity-select">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <button class="btn-primary add-to-cart" onclick="addToCart(1, 150, 'Supremê Vanille Élixir', '/Users/a9457/Desktop/Scherm­afbeelding 2025-04-07 om 22.53.27.png', document.getElementById('quantity-1').value)">Toevoegen aan winkelwagen</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Parfum Webshop. Alle rechten voorbehouden.</p>
+        </div>
+    </footer>
+</body>
+</html>

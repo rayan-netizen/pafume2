@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacteer Ons - Collection Privee</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Additional styles for the contact page */
+        .contact {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #FAF9F6; /* Ivory white background */
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact h1 {
+            font-size: 2.5em;
+            color: #B76E79; /* Roségoud for title */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            font-size: 1.2em;
+            color: #333; /* Darker text for readability */
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .contact-details {
+            margin-bottom: 40px;
+        }
+
+        .contact-details h2 {
+            font-size: 1.8em;
+            color: #B76E79; /* Roségoud for section title */
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .contact-details ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        .contact-details ul li {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .contact-details ul li a {
+            color: #B76E79; /* Roségoud for links */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-details ul li a:hover {
+            color: #D4AF37; /* Light gold for hover effect */
+        }
+
+        .contact-form {
+            margin-top: 20px;
+        }
+
+        .contact-form h2 {
+            font-size: 1.8em;
+            color: #B76E79; /* Roségoud for section title */
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 1.2em;
+            color: #333; /* Darker text for readability */
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 12px;
+            font-size: 1em;
+            border: 1px solid #D3CFC4; /* Stone beige for borders */
+            border-radius: 8px;
+            background-color: #FFFFFF; /* White for input background */
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #B76E79; /* Roségoud for focus */
+            outline: none;
+        }
+
+        .form-group textarea {
+            resize: none;
+        }
+
+        .btn-primary {
+            align-self: center;
+            padding: 12px 24px;
+            font-size: 1.2em;
+            background-color: #B76E79; /* Roségoud for button */
+            color: #FAF9F6; /* Ivory white for text */
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #D4AF37; /* Light gold for hover effect */
+            transform: scale(1.05);
+        }
+
+        .back-button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.2em;
+            color: #B76E79; /* Roségoud for button */
+            text-decoration: none;
+            font-weight: bold;
+            margin: 20px;
+        }
+
+        .back-button svg {
+            width: 24px;
+            height: 24px;
+            fill: #B76E79; /* Roségoud for icon */
+        }
+
+        .back-button:hover {
+            color: #D4AF37; /* Light gold for hover effect */
+        }
+
+        .back-button svg:hover {
+            fill: #D4AF37; /* Light gold for hover effect */
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z"/></svg>
+        Terug
+    </a>
+    <header class="header">
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="contact.html">Contacteer Ons</a></li>
+                <li><a href="cart.html">Winkelwagen (<span id="cart-count">0</span>)</a></li>
+                <li><a href="checkout.html">Afrekenen</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="contact">
+            <h1>Contacteer Ons</h1>
+            <p>Heeft u vragen, opmerkingen of wilt u meer informatie over onze producten? Neem gerust contact met ons op via onderstaande gegevens:</p>
+            <div class="contact-details">
+                <h2>Contactgegevens</h2>
+                <ul>
+                    <li><strong>Telefoon:</strong> <a href="tel:+31638573343">+31 6 38573343</a></li>
+                    <li><strong>Email:</strong> <a href="mailto:rayansan1@outlook.com">rayansan1@outlook.com</a></li>
+                </ul>
+            </div>
+            <div class="contact-form">
+                <h2>Stuur ons een bericht</h2>
+                <form action="verwerk_contact.php" method="POST">
+                    <div class="form-group">
+                        <label for="naam">Naam:</label>
+                        <input type="text" id="naam" name="naam" placeholder="Uw naam" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mailadres:</label>
+                        <input type="email" id="email" name="email" placeholder="Uw e-mailadres" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bericht">Bericht:</label>
+                        <textarea id="bericht" name="bericht" rows="5" placeholder="Uw bericht" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Verstuur Bericht</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Collection Privee. Alle rechten voorbehouden.</p>
+        </div>
+    </footer>
+</body>
+</html>

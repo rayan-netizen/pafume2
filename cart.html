@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winkelwagen - Collection Privee</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <a href="index.html" class="back-button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z"/></svg>
+        Terug
+    </a>
+    <header class="header">
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="contact.html">Contacteer Ons</a></li>
+                <li><a href="cart.html">Winkelwagen (<span id="cart-count">0</span>)</a></li>
+                <li><a href="checkout.html">Afrekenen</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="cart">
+            <h2 class="cart-title">Jouw Winkelwagen</h2>
+            <div id="cart-details" class="cart-details"></div>
+            <div class="cart-summary">
+                <p id="cart-total" class="cart-total">Totaal: €0</p>
+                <div class="cart-actions">
+                    <button class="btn-primary" onclick="clearCart()">Winkelwagen legen</button>
+                    <button class="btn-primary" onclick="window.location.href='checkout.html'">Afrekenen</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Collection Privee. Alle rechten voorbehouden.</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add fade-in animation to cart items
+            const cartDetails = document.getElementById('cart-details');
+            if (cartDetails) {
+                cartDetails.classList.add('fade-in');
+            }
+
+            const cartCountElement = document.getElementById('cart-count');
+            if (cartCountElement) {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cartCountElement.textContent = cart.reduce((total, item) => total + item.quantity, 0);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afrekenen - Collection Privee</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <style>
+        input.valid {
+            border-color: #28a745; /* Groen voor geldige invoer */
+            background-color: #e6f9e6; /* Lichtgroene achtergrond */
+        }
+
+        input.invalid {
+            border-color: #dc3545; /* Rood voor ongeldige invoer */
+            background-color: #f9e6e6; /* Lichtrode achtergrond */
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z"/></svg>
+        Terug
+    </a>
+    <header class="header">
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="contact.html">Contacteer Ons</a></li>
+                <li><a href="cart.html">Winkelwagen (<span id="cart-count">0</span>)</a></li>
+                <li><a href="checkout.html">Afrekenen</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="checkout">
+            <h2 class="checkout-title">Afrekenen</h2>
+            <form action="verwerk_bestelling.php" method="POST" class="checkout-form">
+                <!-- Persoonlijke gegevens -->
+                <fieldset class="form-section">
+                    <legend>Persoonlijke Gegevens</legend>
+                    <div class="form-group">
+                        <label for="voornaam">Voornaam:</label>
+                        <input type="text" id="voornaam" name="voornaam" placeholder="Uw voornaam" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="achternaam">Achternaam:</label>
+                        <input type="text" id="achternaam" name="achternaam" placeholder="Uw achternaam" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mailadres:</label>
+                        <input type="email" id="email" name="email" placeholder="Uw e-mailadres" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" onclick="validatePersonalDetails()">Controleer Persoonlijke Gegevens</button>
+                    </div>
+                </fieldset>
+
+                <!-- Adresgegevens -->
+                <fieldset class="form-section">
+                    <legend>Adresgegevens</legend>
+                    <div class="form-group">
+                        <label for="postcode">Postcode:</label>
+                        <input type="text" id="postcode" name="postcode" placeholder="Uw postcode" required oninput="autoFillAddress()">
+                    </div>
+                    <div class="form-group">
+                        <label for="straat">Straat:</label>
+                        <input type="text" id="straat" name="straat" placeholder="Straatnaam" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="stad">Stad:</label>
+                        <input type="text" id="stad" name="stad" placeholder="Stad" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" onclick="validateAddressDetails()">Controleer Adresgegevens</button>
+                    </div>
+                </fieldset>
+
+                <!-- Betaalmethoden -->
+                <fieldset class="form-section">
+                    <legend>Betaalmethode</legend>
+                    <div class="form-group">
+                        <label>
+                            <input type="radio" name="betaalmethode" value="ideal" required> iDEAL
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="radio" name="betaalmethode" value="creditcard"> Creditcard
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="radio" name="betaalmethode" value="paypal"> PayPal
+                        </label>
+                    </div>
+                </fieldset>
+            </form>
+
+            <!-- Producten overzicht -->
+            <div id="checkout-products" class="checkout-products">
+                <!-- Dynamically populated product list -->
+            </div>
+
+            <!-- Bestelling plaatsen -->
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">Bestelling Plaatsen</button>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Collection Privee. Alle rechten voorbehouden.</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cartCountElement = document.getElementById('cart-count');
+            if (cartCountElement) {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cartCountElement.textContent = cart.reduce((total, item) => total + item.quantity, 0);
+            }
+        });
+
+        function autoFillAddress() {
+            const postcodeInput = document.getElementById('postcode');
+            const streetInput = document.getElementById('straat');
+            const cityInput = document.getElementById('stad');
+            const postcode = postcodeInput.value.trim();
+
+            const postcodeAddressMap = {
+                '1011': { street: 'Damstraat', city: 'Amsterdam' },
+                '2000': { street: 'Groenplaats', city: 'Antwerpen' },
+                '3000': { street: 'Bondgenotenlaan', city: 'Leuven' },
+                '4000': { street: 'Place Saint-Lambert', city: 'Luik' },
+                '5000': { street: 'Rue de Fer', city: 'Namen' }
+            };
+
+            if (postcodeAddressMap[postcode]) {
+                streetInput.value = postcodeAddressMap[postcode].street;
+                cityInput.value = postcodeAddressMap[postcode].city;
+            } else {
+                streetInput.value = '';
+                cityInput.value = '';
+            }
+        }
+
+        function validateInput(input, isValid) {
+            if (isValid) {
+                input.classList.remove('invalid');
+                input.classList.add('valid');
+            } else {
+                input.classList.remove('valid');
+                input.classList.add('invalid');
+            }
+        }
+
+        function validatePersonalDetails() {
+            const voornaam = document.getElementById('voornaam');
+            const achternaam = document.getElementById('achternaam');
+            const email = document.getElementById('email');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            validateInput(voornaam, voornaam.value.trim() !== '');
+            validateInput(achternaam, achternaam.value.trim() !== '');
+            validateInput(email, emailRegex.test(email.value));
+        }
+
+        function validateAddressDetails() {
+            const postcode = document.getElementById('postcode');
+            const straat = document.getElementById('straat');
+            const stad = document.getElementById('stad');
+
+            validateInput(postcode, postcode.value.trim() !== '');
+            validateInput(straat, straat.value.trim() !== '');
+            validateInput(stad, stad.value.trim() !== '');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkoutProductsElement = document.getElementById('checkout-products');
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            if (cart.length === 0) {
+                checkoutProductsElement.innerHTML = '<p>Uw winkelwagen is leeg.</p>';
+                return;
+            }
+
+            let totalPrice = 0;
+            cart.forEach(item => {
+                item.price = 25;
+
+                const productElement = document.createElement('div');
+                productElement.classList.add('checkout-product');
+                productElement.innerHTML = `
+                    <div class="checkout-product-image">
+                        <img src="${item.image}" alt="${item.name}">
+                    </div>
+                    <div class="checkout-product-details">
+                        <h3>${item.name}</h3>
+                        <p>Aantal: ${item.quantity}</p>
+                        <p>Prijs per stuk: €${item.price}</p>
+                        <p><strong>Totaal: €${item.price * item.quantity}</strong></p>
+                    </div>
+                `;
+                checkoutProductsElement.appendChild(productElement);
+                totalPrice += item.price * item.quantity;
+            });
+
+            const totalElement = document.createElement('p');
+            totalElement.classList.add('checkout-total');
+            totalElement.innerHTML = `<strong>Totaal te betalen: €${totalPrice}</strong>`;
+            checkoutProductsElement.appendChild(totalElement);
+        });
+    </script>
+</body>
+</html>

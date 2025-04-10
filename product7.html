@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magnificent - Parfum Webshop</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <a href="index.html" class="back-button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z"/></svg>
+        Terug
+    </a>
+    <header class="header">
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="contact.html">Contacteer Ons</a></li>
+                <li><a href="cart.html">Winkelwagen (<span id="cart-count">0</span>)</a></li>
+                <li><a href="checkout.html">Afrekenen</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="product-detail">
+            <div class="product-detail-container">
+                <div class="product-image">
+                    <img src="/Users/a9457/Desktop/Scherm­afbeelding 2025-04-07 om 23.15.11.png" alt="Magnificent Parfum">
+                </div>
+                <div class="product-info">
+                    <h1>Magnificent</h1>
+                    <p class="product-price"><strong>Prijs:</strong> €25</p>
+                    <p class="product-description">
+                        Magnificent is een warme geur met amber en vanilletonen. 
+                        Deze parfum is perfect voor een gezellige avond of een speciale gelegenheid.
+                    </p>
+                    <p class="product-highlight">
+                        <strong>Waarom kiezen voor Magnificent?</strong>
+                        <ul>
+                            <li>Warme en zoete geur voor herfst en winter.</li>
+                            <li>Een mix van amber, vanille en kaneel.</li>
+                            <li>Ideaal voor romantische en gezellige avonden.</li>
+                        </ul>
+                    </p>
+                    <button class="btn-primary add-to-cart" onclick="addToCart(7, 125, 'Magnificent', '/Users/a9457/Desktop/Scherm­afbeelding 2025-04-07 om 23.15.11.png')">Toevoegen aan winkelwagen</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Parfum Webshop. Alle rechten voorbehouden.</p>
+        </div>
+    </footer>
+</body>
+</html>
